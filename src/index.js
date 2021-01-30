@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import "dotenv/config";
 
 const app = express();
+const port = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -14,6 +15,6 @@ app.get("/", (req, res) => {
   });
 });
 
-app.listen(4000, () => {
-  console.log(`app is listening to port 4000`);
+app.listen(port, () => {
+  console.log(`app is listening to port ${port}`);
 });
