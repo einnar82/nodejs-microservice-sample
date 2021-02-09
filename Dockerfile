@@ -3,9 +3,7 @@
 #
 FROM node:14-alpine AS appbuild
 WORKDIR /usr/src/app
-COPY package.json ./
-COPY .babelrc ./
-COPY .env ./
+COPY ["package.json",".babelrc", ".env",  "./"]
 RUN npm install
 COPY ./src ./src
 RUN npm run build
@@ -14,9 +12,7 @@ RUN npm run build
 #
 FROM node:14-alpine
 WORKDIR /usr/src/app
-COPY package.json ./
-COPY .babelrc ./
-COPY .env ./
+COPY ["package.json",".babelrc", ".env",  "./"]
 RUN npm install
 COPY --from=appbuild /usr/src/app/dist ./dist
 EXPOSE 5000
