@@ -13,7 +13,7 @@ RUN npm run build
 FROM node:14-alpine
 WORKDIR /usr/src/app
 COPY ["package.json",".babelrc", ".env",  "./"]
-RUN npm install
+COPY --from=appbuild /usr/src/app/node_modules ./node_modules
 COPY --from=appbuild /usr/src/app/dist ./dist
 EXPOSE 5000
 CMD npm start
