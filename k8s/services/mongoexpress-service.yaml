@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongoexpress-service
+spec:
+  #tag the pod
+  selector:
+    app: mongoexpress
+  # assigns service an external IP address and so
+  # accepts external request
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      # service port
+      port: 8081
+      # containerPort of the deployment
+      targetPort: 8081
+      # port of external IP address
+      # port you need to put into browser
+      # must between 30000-32767
+      nodePort: 30000
