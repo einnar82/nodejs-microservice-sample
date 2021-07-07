@@ -3,4 +3,6 @@ kind: ConfigMap
 metadata:
   name: mongodb-configmap
 data:
+  # you can access the namespace via
+  # service-name.namespace
   database_url: mongodb-service
