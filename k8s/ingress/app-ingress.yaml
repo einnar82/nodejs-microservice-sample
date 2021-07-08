@@ -9,19 +9,22 @@ metadata:
     name: perahub-gateway-app
 spec:
   rules:
-  - host: dev.api-gateway.perahub.com.ph
+  - host: dev.payments.perahub.com.ph
     http:
       paths:
       - pathType: Prefix
-        path: "/payments"
+        path: "/"
         backend:
           service:
             # kong api gateway for payments
             name: payment-gateway-service
             port:
               number: 4000
+  - host: dev.cico.perahub.com.ph
+    http:
+      paths:
       - pathType: Prefix
-        path: "/cico"
+        path: "/"
         backend:
           service:
             # kong api gateway for cico
