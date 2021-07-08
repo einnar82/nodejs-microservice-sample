@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: perahub-gateway-app
+  namespace: development
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    name: perahub-gateway-app
+spec:
+  rules:
+  - host: dev.api-gateway.perahub.com.ph
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/payments"
+        backend:
+          service:
+            # kong api gateway for payments
+            name: payment-gateway-service
+            port:
+              number: 4000
+      - pathType: Prefix
+        path: "/cico"
+        backend:
+          service:
+            # kong api gateway for cico
+            name: cico-gateway-service
+            port:
+              number: 5000
