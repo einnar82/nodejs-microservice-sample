@@ -8,6 +8,10 @@ metadata:
   labels:
     name: perahub-gateway-app
 spec:
+  tls:
+    - hosts:
+      - perahub.com.ph
+      secretName: perahub-tls-secrets
   rules:
   - host: dev.payments.perahub.com.ph
     http:
