@@ -14,8 +14,8 @@ spec:
       # service port
       port: 8081
       # containerPort of the deployment
-      targetPort: 8081
       # port of external IP address
       # port you need to put into browser
+      targetPort: 8081
       # must between 30000-32767
       nodePort: 30000
